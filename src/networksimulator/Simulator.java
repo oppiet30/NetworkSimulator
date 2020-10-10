@@ -22,6 +22,7 @@ public class Simulator extends JFrame {
 
         NetworkUtils util = new NetworkUtils(msg);
         new TransportLayer(this, anim, util);
+        new Transmission(this, anim, util);
 
         setResizable(false);
         pack();
@@ -37,7 +38,6 @@ public class Simulator extends JFrame {
         inputMessage.setLocationRelativeTo(null);
         inputMessage.setVisible(true);
         msg = inputMessage.getValidatedText();
-        System.out.println(msg);
     }
 
     public static void main(String[] args) {

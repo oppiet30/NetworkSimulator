@@ -43,7 +43,8 @@ public class TransportLayer {
                             anim,
                             "The message has not arrived.",
                             "H1 Transport Layer",
-                            JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.WARNING_MESSAGE
+                    );
                     anim.startAnim();
                 } else {
                     anim.stopAnim();
@@ -157,11 +158,9 @@ public class TransportLayer {
         JLabel ackNumLbl = new JLabel("<html><body>Acknowledgment number<br><center>"
                 + util.getAckNum() + "</center></body></html>", SwingConstants.CENTER);
         JLabel hlenLbl = new JLabel("<html><body>HLEN<br><center>"
-                + util.getHlen() + "</center></body></html>", SwingConstants.CENTER);
-        JLabel tcpReservedLbl = new JLabel("<html><body>Reserved<br><center>"
-                + util.getTCPReserved() + "</center></body></html>", SwingConstants.CENTER);
-        JLabel controlLbl = new JLabel("<html><body>Control<br><center>"
-                + util.getControl() + "</center></body></html>", SwingConstants.CENTER);
+                + util.getHLEN() + "</center></body></html>", SwingConstants.CENTER);
+        JLabel reservedControlLbl = new JLabel("<html><body>Reserved/Control<br><center>"
+                + util.getReservedControl() + "</center></body></html>", SwingConstants.CENTER);
         JLabel windowLbl = new JLabel("<html><body>Window size<br><center>"
                 + util.getWindow() + "</center></body></html>", SwingConstants.CENTER);
         JLabel checksumLbl = new JLabel("<html><body>Checksum<br><center>"
@@ -189,20 +188,15 @@ public class TransportLayer {
         ackNumLbl.setBorder(blkBorder);
         ackNumLbl.setOpaque(true);
 
-        hlenLbl.setPreferredSize(new Dimension(45, 30));
+        hlenLbl.setPreferredSize(new Dimension(55, 30));
         hlenLbl.setBackground(Color.WHITE);
         hlenLbl.setBorder(blkBorder);
         hlenLbl.setOpaque(true);
 
-        tcpReservedLbl.setPreferredSize(new Dimension(60, 30));
-        tcpReservedLbl.setBackground(Color.WHITE);
-        tcpReservedLbl.setBorder(blkBorder);
-        tcpReservedLbl.setOpaque(true);
-
-        controlLbl.setPreferredSize(new Dimension(60, 30));
-        controlLbl.setBackground(Color.WHITE);
-        controlLbl.setBorder(blkBorder);
-        controlLbl.setOpaque(true);
+        reservedControlLbl.setPreferredSize(new Dimension(112, 30));
+        reservedControlLbl.setBackground(Color.WHITE);
+        reservedControlLbl.setBorder(blkBorder);
+        reservedControlLbl.setOpaque(true);
 
         windowLbl.setPreferredSize(bit16);
         windowLbl.setBackground(Color.WHITE);
@@ -224,8 +218,7 @@ public class TransportLayer {
         segment.add(seqNumLbl);
         segment.add(ackNumLbl);
         segment.add(hlenLbl);
-        segment.add(tcpReservedLbl);
-        segment.add(controlLbl);
+        segment.add(reservedControlLbl);
         segment.add(windowLbl);
         segment.add(checksumLbl);
         segment.add(urgPtrLbl);
