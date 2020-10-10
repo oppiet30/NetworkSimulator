@@ -6,9 +6,10 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
-import javax.swing.Timer;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.beans.PropertyChangeListener;
+import javax.swing.*;
 
 @SuppressWarnings("serial")
 public class Animation extends JPanel implements ActionListener {
@@ -42,9 +43,40 @@ public class Animation extends JPanel implements ActionListener {
 
     private void initAnim() {
         setPreferredSize(new Dimension(A_WIDTH, A_HEIGHT));
+
+        Icon pause = new ImageIcon("src/resources/pause.png");
+        JButton btnPause = new JButton(pause);
+        btnPause.setBounds(390, 0, 100, 100);
+        btnPause.setContentAreaFilled(false);
+        btnPause.setBorderPainted(false);
+        add(btnPause);
+
+        Icon play = new ImageIcon("src/resources/play.png");
+        JButton btnPlay = new JButton(play);
+        btnPlay.setBounds(510, 0, 100, 100);
+        btnPlay.setContentAreaFilled(false);
+        btnPlay.setBorderPainted(false);
+        add(btnPlay);
+
+        btnPause.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                stopAnim();
+            }
+        });
+
+        btnPlay.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                startAnim();
+            }
+        });
+
         loadImage();
+
         x = INITIAL_X;
         y = INITIAL_Y;
+
         timer = new Timer(DELAY, this);
         timer.start();
     }

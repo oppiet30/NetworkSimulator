@@ -25,6 +25,7 @@ public class NetworkUtils {
     private String urgPtr;
 
     // Data and option field
+    private String msg;
     private String data;
     private int dataLength = 0;
     private int dataSum = 0;
@@ -59,6 +60,7 @@ public class NetworkUtils {
         this.checksum = "";
         this.urgPtr = "00 00";
 
+        this.msg = message;
         this.data = convertMsgToHex(message);
         this.dataLength = dataLength;
         this.dataSum = dataSum;
@@ -298,6 +300,10 @@ public class NetworkUtils {
 
     public String getUrgPtr() {
         return urgPtr;
+    }
+
+    public String getMessage() {
+        return msg;
     }
 
     public String getData() {

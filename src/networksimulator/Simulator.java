@@ -20,8 +20,10 @@ public class Simulator extends JFrame {
         add(anim);
         anim.setLayout(null);
 
+        Boundaries boundaries = new Boundaries();
         NetworkUtils util = new NetworkUtils(msg);
-        new TransportLayer(this, anim, util);
+        new ApplicationLayer(this, anim, util, boundaries);
+        new TransportLayer(this, anim, util, boundaries);
         new Transmission(this, anim, util);
 
         setResizable(false);

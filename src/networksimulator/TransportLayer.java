@@ -10,16 +10,17 @@ import javax.swing.*;
 import javax.swing.border.Border;
 
 public class TransportLayer {
-    Boundaries b = new Boundaries();
+    Boundaries b;
     Frame frame;
     Animation anim;
     NetworkUtils util;
     JDialog segment;
 
-    public TransportLayer(Frame aFrame, Animation animation, NetworkUtils networkUtils) {
+    public TransportLayer(Frame aFrame, Animation animation, NetworkUtils networkUtils, Boundaries boundaries) {
         frame = aFrame;
         anim = animation;
         util = networkUtils;
+        b = boundaries;
 
         JButton btnH1Trans = new JButton("");
         JButton btnH2Trans = new JButton("");
@@ -62,7 +63,8 @@ public class TransportLayer {
                             anim,
                             "The message has not arrived.",
                             "H2 Transport Layer",
-                            JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.WARNING_MESSAGE
+                    );
                     anim.startAnim();
                 } else {
                     anim.stopAnim();
@@ -81,7 +83,7 @@ public class TransportLayer {
     }
 
     private Boolean hasArrivedH2() {
-        if (anim.getEnvX() < b.RIGHT_X) {
+        if (anim.getEnvX() < b.RIGHT_X || anim.getEnvY() > b.BTRANS_Y - 35) {
             return false;
         } else {
             return true;
@@ -90,7 +92,7 @@ public class TransportLayer {
 
     private void createSegment() {
         int seg_w = 375;
-        int seg_h = 425;
+        int seg_h = 540;
 
         Dimension bit32 = new Dimension(350, 30);
         Dimension bit16 = new Dimension(173, 30);
@@ -224,10 +226,11 @@ public class TransportLayer {
         segment.add(urgPtrLbl);
 
         // Data
-        JLabel dataLbl = new JLabel("<html><body>Data and option<br><center>"
-                + util.getData() + "</center></body></html>", SwingConstants.CENTER);
+        String s = "Data/options<br>" + util.getData();
+        String html = "<html><body style='width: %1spx'>%1s";
+        JLabel dataLbl = new JLabel(String.format(html, 60, s), SwingConstants.CENTER);
 
-        dataLbl.setPreferredSize(new Dimension(350, 60));
+        dataLbl.setPreferredSize(new Dimension(350, 180));
         dataLbl.setBackground(Color.YELLOW);
         dataLbl.setOpaque(true);
 

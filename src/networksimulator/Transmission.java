@@ -60,8 +60,6 @@ public class Transmission {
         bitSeq = sourcePort + destPort + seqNum + ackNum + hlen + reservedControl + window
                 + urgPtr + data;
 
-        System.out.println(bitSeq);
-
         JButton btnLink = new JButton("");
         btnLink.setBounds(238, 552, 524, 30);
         btnLink.setContentAreaFilled(false);
