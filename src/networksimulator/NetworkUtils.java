@@ -62,8 +62,6 @@ public class NetworkUtils {
 
         this.msg = message;
         this.data = convertMsgToHex(message);
-        this.dataLength = dataLength;
-        this.dataSum = dataSum;
         this.lenTCP = calculateTCPLength();
         this.checksum = calculateChecksum();
     }
@@ -159,7 +157,7 @@ public class NetworkUtils {
     }
 
     private String convertMsgToHex(String msg) {
-        char ch[] = msg.toCharArray();
+        char[] ch = msg.toCharArray();
         StringBuffer sb = new StringBuffer();
         ArrayList<String> dataList = new ArrayList<>();
 
@@ -185,9 +183,7 @@ public class NetworkUtils {
             dataSum += Integer.parseInt(dataList.get(i), 16);
         }
 
-        String str = sb.toString();
-
-        return str;
+        return sb.toString();
     }
 
     private String calculateTCPLength() {
@@ -219,7 +215,7 @@ public class NetworkUtils {
     }
 
     private String splitAndAdd(String subtotal) {
-        ArrayList<String> pieces = new ArrayList<String>();
+        ArrayList<String> pieces = new ArrayList<>();
         int sum = 0;
         String sumStr = "12345";
 

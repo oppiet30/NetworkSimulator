@@ -11,7 +11,6 @@ public class Transmission {
     Frame frame;
     Animation anim;
     NetworkUtils util;
-    JDialog bitSequence;
 
     private Map<String, String> digiMap = new HashMap<>();
     private String sourcePort;

@@ -6,9 +6,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.beans.PropertyChangeListener;
+import java.net.URL;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
@@ -35,23 +33,25 @@ public class Animation extends JPanel implements ActionListener {
     }
 
     private void loadImage() {
-        ImageIcon envImg = new ImageIcon("src/resources/blueEnvelope.png");
-        blueEnvelope = envImg.getImage();
-        ImageIcon bgImg = new ImageIcon("src/resources/NetworkConfiguration.png");
-        background = bgImg.getImage();
+        URL u1 = Animation.class.getResource("/resources/blueEnvelope.png");
+        URL u2 = Animation.class.getResource("/resources/NetworkConfiguration.png");
+        blueEnvelope = new ImageIcon(u1).getImage();
+        background = new ImageIcon(u2).getImage();
     }
 
     private void initAnim() {
         setPreferredSize(new Dimension(A_WIDTH, A_HEIGHT));
 
-        Icon pause = new ImageIcon("src/resources/pause.png");
+        URL u3 = Animation.class.getResource("/resources/pause.png");
+        Icon pause = new ImageIcon(u3);
         JButton btnPause = new JButton(pause);
         btnPause.setBounds(390, 0, 100, 100);
         btnPause.setContentAreaFilled(false);
         btnPause.setBorderPainted(false);
         add(btnPause);
 
-        Icon play = new ImageIcon("src/resources/play.png");
+        URL u4 = Animation.class.getResource("/resources/play.png");
+        Icon play = new ImageIcon(u4);
         JButton btnPlay = new JButton(play);
         btnPlay.setBounds(510, 0, 100, 100);
         btnPlay.setContentAreaFilled(false);

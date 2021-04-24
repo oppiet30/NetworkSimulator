@@ -3,11 +3,10 @@ package networksimulator;
 import javax.swing.JOptionPane;
 import javax.swing.JDialog;
 import javax.swing.JTextField;
-import java.beans.*; //property change stuff
+import java.beans.*;
 import java.awt.*;
 import java.awt.event.*;
 
-/* 1.4 example used by NetworkSimulator.java. */
 @SuppressWarnings("serial")
 class InputMessage extends JDialog implements ActionListener, PropertyChangeListener {
     private String typedText = null;
@@ -62,7 +61,7 @@ class InputMessage extends JDialog implements ActionListener, PropertyChangeList
                  * we're going to change the JOptionPane's
                  * value property.
                  */
-                optionPane.setValue(new Integer(JOptionPane.CLOSED_OPTION));
+                optionPane.setValue(JOptionPane.CLOSED_OPTION);
             }
         });
 
